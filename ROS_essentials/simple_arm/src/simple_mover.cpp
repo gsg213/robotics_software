@@ -21,14 +21,14 @@ int main(int argc, char** argv)
     int start_date, elapsed;
 
     //get ROS start time
-    while (not start_time){
+    while (not start_date){
         start_time = ros::Time::now().toSec();        
     }
 
     //ros::ok returns true while ROS is active, returns false if the node has finished shutting down.
     while(ros::ok()){
         //get ROS elapsed time
-        elapsed = ros::Time::now().toSec() - start_time;
+        elapsed = ros::Time::now().toSec() - start_date;
 
         //set the messages to be published
         std_msgs::Float64 joint1_angle, joint2_angle;
