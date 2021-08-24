@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 
     //get ROS start time
     while (not start_date){
-        start_time = ros::Time::now().toSec();        
+        start_date = ros::Time::now().toSec();        
     }
 
     //ros::ok returns true while ROS is active, returns false if the node has finished shutting down.
