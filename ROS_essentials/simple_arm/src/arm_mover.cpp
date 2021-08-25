@@ -5,6 +5,12 @@
 // global joint pub variables
 ros::Publisher joint1_pub, joint2_pub;
 
+bool safe_move_request(simple_arm::GoToposition::Request& req, simple_arm::GoToPosition::Response& res){
+
+    ROS_INFO("GoToPosition Request recieved - j1:%1.2f, j2:%1.2f", (float)req.joint_1, (float)req.joint_2);
+}
+
+
 // main method
 int main(int argc, char** argv){
 
