@@ -5,9 +5,34 @@
 // global joint pub variables
 ros::Publisher joint1_pub, joint2_pub;
 
+
+// callback function for whenever the safe move service is called
 bool safe_move_request(simple_arm::GoToposition::Request& req, simple_arm::GoToPosition::Response& res){
 
     ROS_INFO("GoToPosition Request recieved - j1:%1.2f, j2:%1.2f", (float)req.joint_1, (float)req.joint_2);
+
+    std::vector<float> joints_angles; // need to create a function to check joint angles in a safe position
+
+    //define joint angle variables
+    std_msg::Float64 joint1_angle, joint2_angle;
+
+    joint1_angle.data = joints_angles[0];
+    joint2_angle.data = joints_angles[1];
+
+    joint1_pub.publish(joint1_angle);
+    joint2_pub.publish(joint2_angle);
+
+    // wait 3 secs for the arm to settle
+    ros::Duration(3).sleep();
+
+
+    //return a response message
+    res.msg_feedback = "Joint angles set - j1: " + std::to_string(joint1_angle) + ", j2: " + std::to_string(joint2_angle);
+
+    ROS_INFO_STREAM(res.msg_feedback);
+
+    return true;
+
 }
 
 
