@@ -31,13 +31,13 @@ std::vector<float> clamp_at_boundaries(float requested_j1, float requested_j2){
     //checks if joint 1 is inside the boundaries, in other case clamp it
     if (requested_j1 < min_j1 || requested_j1 > max_j1){
         clamped_j1 = std::min(std::max(requested_j1, min_j1),max_j1);
-        ROSWARN("j1 angle is out of boundaries, valid range is (%1.2f,%1.2f) clamped at %1.2f",min_j1,max_j1,clamped_j1);
+        ROSWARN("j1 angle is out of boundaries (%1.2f), valid range is (%1.2f,%1.2f) clamped at %1.2f",requested_j1,min_j1,max_j1,clamped_j1);
     }
 
     //checks if joint 2 is inside the boundaries, in other case clamp it
     if (requested_j2 < min_j2 || requested_j2 > max_j2){
         clamped_j2 = std::min(std::max(requested_j2, min_j2),max_j2);
-        ROSWARN("j2 angle is out of boundaries, valid range is (%1.2f,%1.2f) clamped at %1.2f",min_j2,max_j2,clamped_j2);
+        ROSWARN("j2 angle is out of boundaries (%1.2f), valid range is (%1.2f,%1.2f) clamped at %1.2f",requested_j2,min_j2,max_j2,clamped_j2);
     }
 
     //store clamped joint angles
